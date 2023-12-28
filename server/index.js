@@ -8,7 +8,11 @@ app.listen(port, () => {
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 app.use('/', (req, res) => {
   res.send('listening');
 });
