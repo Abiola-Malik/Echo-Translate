@@ -9,4 +9,7 @@ app.listen(port, () => {
 
 app.use(express.json());
 app.use(cors());
+app.use('/', (req, res) => {
+  res.send('listening');
+});
 app.use('/translate', require('./routes/translate'));
