@@ -8,15 +8,13 @@ app.listen(port, () => {
 });
 
 const corsOptions = {
-  origin: [
-    'http://example.com',
-    'http://localhost:3000',
-    'https://echo-translate.vercel.app',
-  ],
+  origin: 'https://echo-translate.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // enable set cookie
+  credentials: true,
   optionsSuccessStatus: 204,
 };
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cors(corsOptions));
