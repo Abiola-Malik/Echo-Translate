@@ -21,4 +21,4 @@ app.use(cors(corsOptions));
 app.use('/', (req, res) => {
   res.send('listening');
 });
-app.use('/translate', require('./routes/translate'));
+app.use('/api', require('./routes/translate'));
