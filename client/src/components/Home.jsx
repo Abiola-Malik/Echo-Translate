@@ -68,7 +68,7 @@ const Home = () => {
 
   return (
     <main className='bg-primary w-screen h-screen'>
-      <h1 className='text-3xl p-1 text-center'>
+      <h1 className='text-3xl p-1 md:text-center'>
         Echo Translate - Multilingual Text Translation
       </h1>
       <div className='w-full h-full flex justify-center items-center'>
