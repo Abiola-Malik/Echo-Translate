@@ -57,20 +57,22 @@ const Home = () => {
   };
 
   return (
-    <main className=' bg-primary w-screen h-screen '>
-      <h1 className=' text-3xl p-1 text-center'>Echo translate</h1>
+    <main className='bg-primary w-screen h-screen'>
+      <h1 className='text-3xl p-1 text-center'>
+        Echo Translate - Multilingual Text Translation
+      </h1>
       <div className='w-full h-full flex justify-center items-center'>
         <form className='text-black p-4 w-full max-w-[600px]'>
           <section className='flex flex-col gap-3 mb-3'>
             <div className='flex flex-col md:flex-row'>
-              <label htmlFor='from-language'>From:</label>
+              <label htmlFor='from-language'>Translate From:</label>
               <select
                 className='px-4 py-2 rounded w-[50%] mx-2 bg-black text-white'
                 id='from-language'
                 required
                 onChange={(e) => handleFromChange(e.target.value)}
               >
-                <option value='default'></option>
+                <option value='default'>Select Language</option>
 
                 {options.map((option) => (
                   <option
@@ -82,14 +84,14 @@ const Home = () => {
                   </option>
                 ))}
               </select>
-              <label htmlFor='to-language'>To:</label>
+              <label htmlFor='to-language'>Translate To:</label>
               <select
                 className='px-4 py-2 rounded w-[50%] mx-2 bg-black text-white mt-2 md:mt-0'
                 id='to-language'
                 required
                 onChange={(e) => handleToChange(e.target.value)}
               >
-                <option value='default'></option>
+                <option value='default'>Select Language</option>
                 {options.map((option) => (
                   <option
                     key={option.name}
@@ -104,7 +106,7 @@ const Home = () => {
             <div className='flex flex-row gap-3'>
               <input
                 type='text'
-                placeholder='Enter text'
+                placeholder='Enter text to translate'
                 className='px-4 py-2 rounded w-[75%]'
                 required
                 value={inputVal}
