@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import options from '../data';
-import { VscSend } from 'react-icons/vsc';
+import { VscSend, VscCopy } from 'react-icons/vsc';
 import Loader from './Loader';
 import Axios from './Axios';
 
@@ -54,6 +54,16 @@ const Home = () => {
       console.error(error);
       setError('An error occurred during translation. Please try again.');
     }
+  };
+
+  const handleCopy = (e) => {
+    e.preventDefault();
+    const textArea = document.createElement('textarea');
+    textArea.value = content;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
   };
 
   return (
@@ -123,6 +133,13 @@ const Home = () => {
           <section className='my-3 h-[200px] bg-white text-black'>
             {error ? <p className='text-red-500'>{error}</p> : content}
           </section>
+          <button
+            onClick={handleCopy}
+            className='bg-secondary px-4 py-2 rounded text-white mt-2 hover:bg-opacity-80 transition duration-150 ease-in'
+          >
+            <VscCopy />
+            Copy Text
+          </button>
         </form>
       </div>
     </main>
