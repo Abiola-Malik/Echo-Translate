@@ -34,10 +34,11 @@ const Home = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await Axios.post('/translate', {
-        text: inputVal,
-        sourceLang: selectedFromCode,
-        targetLang: selectedToCode,
+      const response = await Axios.get('/', {
+        params: {
+          q: inputVal,
+          langpair: `${selectedFromCode}|${selectedToCode}`,
+        },
       });
 
       if (response.data) {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-  baseURL: 'https://echo-translate-server.onrender.com/api',
+  baseURL: 'https://api.mymemory.translated.net/get',
   withCredentials: true,
 });
 
