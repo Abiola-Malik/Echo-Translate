@@ -34,7 +34,7 @@ const Home = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await Axios.get('/', {
+      const response = await Axios.post('/', {
         params: {
           q: inputVal,
           langpair: `${selectedFromCode}|${selectedToCode}`,
