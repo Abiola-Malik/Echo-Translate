@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-  baseURL: 'https://api.mymemory.translated.net/get',
-  withCredentials: true,
+  baseURL: 'https://api.mymemory.translated.net',
 });
 
 export default Axios;

@@ -34,16 +34,19 @@ const Home = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await Axios.post({
-        params: {
-          q: inputVal,
-          langpair: `${selectedFromCode}|${selectedToCode}`,
-        },
-      });
+      const response = await Axios.get(
+        `/get?q=${inputVal}&langpair=${selectedFromCode}|${selectedToCode}`,
+        {
+          // params: {
+          //   q: inputVal,
+          //   langpair: `${selectedFromCode}|${selectedToCode}`,
+          // },
+        }
+      );
 
       if (response.data) {
         setIsLoading(false);
-        setTranslatedWord(response.data.translation);
+        setTranslatedWord(response.data.responseData.translatedText);
         setError(null); // Reset error state on success
       }
     } catch (error) {
