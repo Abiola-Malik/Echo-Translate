@@ -68,6 +68,8 @@ const Home = () => {
               required
               onChange={(e) => handleFromChange(e.target.value)}
             >
+              <option value='default'></option>
+
               {options.map((option) => (
                 <option
                   key={option.name}
