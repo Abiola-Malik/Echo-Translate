@@ -23,6 +23,7 @@ const TranslationDisplay = ({ content, error }) => {
   return (
     <>
       <section className='my-3 h-[200px] bg-slate-900 text-black flex flex-col space-y-3 overflow-y-auto'>
+        {''}
         <button
           onClick={handleCopy}
           className='px-4 rounded text-white mt-2 hover:bg-opacity-80 transition duration-150 ease-in self-end text-1xl hover:text-[tomato]'
