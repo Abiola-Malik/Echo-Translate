@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { VscCopy } from 'react-icons/vsc';
-import TypeWriterEffect from 'react-typewriter-effect';
 
 const TranslationDisplay = ({ content, error }) => {
   const [copied, setCopied] = useState(false);
