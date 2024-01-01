@@ -1,9 +1,11 @@
 import React from 'react';
-
+import './animations.css';
 const Loader = () => {
   return (
-    <div className='flex items-center justify-center'>
-      <div className='w-6 h-6 border-4 border-secondary border-dashed rounded-full animate-spin transition ease-in border-t-transparent'></div>
+    <div className='flex space-x-1 p-3' id='loader'>
+      <div className='w-3 h-3 rounded-full  bg-slate-800 animate-bounce'></div>
+      <div className='w-3 h-3 rounded-full bg-slate-800 animate-bounce'></div>
+      <div className='w-3 h-3 rounded-full bg-slate-800 animate-bounce'></div>
     </div>
   );
 };

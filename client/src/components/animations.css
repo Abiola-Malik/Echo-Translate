@@ -1,0 +1,15 @@
+#loader {
+  animation-duration: 0.6s;
+}
+
+#loader div:nth-child(1) {
+  background-color: white;
+}
+#loader div:nth-child(2) {
+  animation-delay: 0.3s;
+  background-color: tomato;
+}
+#loader div:nth-child(3) {
+  animation-delay: 0.4s;
+  background-color: green;
+}

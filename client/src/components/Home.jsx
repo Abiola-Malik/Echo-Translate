@@ -3,6 +3,8 @@ import options from '../data';
 import { VscSend, VscCopy } from 'react-icons/vsc';
 import Loader from './Loader';
 import Axios from './Axios';
+import TranslationDisplay from './TranslationDisplay';
+import LanguageSelect from './LanguageSelect';
 
 const Home = () => {
   const [inputVal, setInputVal] = useState('');
@@ -35,13 +37,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const response = await Axios.get(
-        `/get?q=${inputVal}&langpair=${selectedFromCode}|${selectedToCode}`,
-        {
-          // params: {
-          //   q: inputVal,
-          //   langpair: `${selectedFromCode}|${selectedToCode}`,
-          // },
-        }
+        `/get?q=${inputVal}&langpair=${selectedFromCode}|${selectedToCode}`
       );
 
       if (response.data) {
@@ -56,90 +52,43 @@ const Home = () => {
     }
   };
 
-  const handleCopy = (e) => {
-    e.preventDefault();
-    const textArea = document.createElement('textarea');
-    textArea.value = content;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-  };
-
   return (
-    <main className='bg-primary w-screen h-screen'>
-      <h1 className='text-3xl p-1 md:text-center'>
+    <main className='bg-primary w-screen h-screen space-y-5'>
+      <h1 className='text-3xl p-1 md:text-center text-transparent bg-clip-text bg-gradient-to-r from-[tomato] to-[lightgreen] '>
         Echo Translate - Multilingual Text Translation
       </h1>
-      <div className='w-full h-full flex justify-center items-center'>
-        <form className='text-black p-4 w-full max-w-[600px]'>
-          <section className='flex flex-col gap-3 mb-3'>
-            <div className='flex flex-col md:flex-row'>
-              <label htmlFor='from-language'>Translate From:</label>
-              <select
-                className='px-4 py-2 rounded w-[50%] mx-2 bg-black text-white'
-                id='from-language'
-                required
-                onChange={(e) => handleFromChange(e.target.value)}
-              >
-                <option value='default'>Select Language</option>
 
-                {options.map((option) => (
-                  <option
-                    key={option.name}
-                    value={option.name}
-                    className='text-white'
-                  >
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor='to-language'>Translate To:</label>
-              <select
-                className='px-4 py-2 rounded w-[50%] mx-2 bg-black text-white mt-2 md:mt-0'
-                id='to-language'
-                required
-                onChange={(e) => handleToChange(e.target.value)}
-              >
-                <option value='default'>Select Language</option>
-                {options.map((option) => (
-                  <option
-                    key={option.name}
-                    value={option.name}
-                    className='text-white'
-                  >
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className='flex flex-row gap-3'>
-              <input
-                type='text'
-                placeholder='Enter text to translate'
-                className='px-4 py-2 rounded w-[75%]'
-                required
-                value={inputVal}
-                onChange={(e) => setInputVal(e.target.value)}
-              />
-              <button
-                onClick={(e) => handleTranslate(e)}
-                className='bg-secondary px-4 py-4 w-auto rounded text-black mt-2 hover:bg-opacity-80 transition duration-150 ease-in'
-              >
-                <VscSend />
-              </button>
-            </div>
+      <div className='w-screen h-fit flex justify-center items-center'>
+        <form
+          className='text-black p-4 w-full max-w-[600px]'
+          onSubmit={(e) => handleTranslate(e)}
+        >
+          <section className='flex flex-col gap-3 mb-3'>
+            <LanguageSelect
+              handleFromChange={handleFromChange}
+              handleToChange={handleToChange}
+              options={options}
+            />
           </section>
-          <section className='my-3 h-[200px] bg-white text-black'>
-            {error ? <p className='text-red-500'>{error}</p> : content}
-          </section>
-          <button
-            onClick={handleCopy}
-            className='bg-secondary px-4 py-2 rounded text-white mt-2 hover:bg-opacity-80 transition duration-150 ease-in'
-          >
-            <VscCopy />
-            Copy Text
-          </button>
+          <TranslationDisplay content={content} error={error} />
+
+          <div className='flex items-center gap-3 rounded-full border border-white text-secondaryText space-x-5 py-2'>
+            <input
+              type='text'
+              placeholder='Enter text to translate'
+              className='pl-3 my-2 rounded bg-transparent w-[80%] focus:border-none hover:border-none outline-none resize-none h-[32px]'
+              required
+              value={inputVal}
+              onChange={(e) => setInputVal(e.target.value)}
+            />
+            <button
+              onClick={(e) => handleTranslate(e)}
+              className='hover:text-[tomato] hover:animate-pulse text-[32px]  rounded text-slate-300 mt-2 hover:bg-opacity-80 transition duration-150 ease-in ml-auto'
+              type='submit'
+            >
+              <VscSend />
+            </button>
+          </div>
         </form>
       </div>
     </main>
