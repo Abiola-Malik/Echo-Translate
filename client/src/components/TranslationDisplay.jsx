@@ -17,16 +17,15 @@ const TranslationDisplay = ({ content, error }) => {
 
     setTimeout(() => {
       setCopied(false);
-    }, 1500);
+    }, 900);
   };
 
   return (
     <>
-      <section className='my-3 h-[200px] bg-slate-900 text-black flex flex-col space-y-3 overflow-y-auto'>
-        {''}
+      <section className='my-3 h-[200px] bg-primary-200 text-black flex flex-col space-y-3 overflow-y-auto rounded-md'>
         <button
           onClick={handleCopy}
-          className='px-4 rounded text-white mt-2 hover:bg-opacity-80 transition duration-150 ease-in self-end text-1xl hover:text-[tomato]'
+          className='px-4 rounded text-slate-700 mt-2 hover:bg-opacity-80 transition duration-150 ease-in self-end text-1xl hover:text-[tomato]'
         >
           {copied ? (
             <p className='text-green-500 ml-2 px-2'>Text copied!</p>
@@ -37,7 +36,7 @@ const TranslationDisplay = ({ content, error }) => {
         {error ? (
           <p className='text-red-500 ml-2 px-2'>{error}</p>
         ) : (
-          <p className='text-secondaryText p-3'>{content}</p>
+          <p className='text-primary-100 p-3'>{content}</p>
         )}
       </section>
     </>
