@@ -60,7 +60,7 @@ const Home = () => {
 
       <form
         className='text-black  p-4 w-full max-w-d[600px] mx-auto md:max-h-[600px] md:w-[600px] md:my-auto'
-        onSubmit={(e) => handleTranslate(e)}
+        onSubmit={handleTranslate}
       >
         <article className='md:self-centre md:mb-3'>
           <section className='flex flex-col gap-3 mb-3'>

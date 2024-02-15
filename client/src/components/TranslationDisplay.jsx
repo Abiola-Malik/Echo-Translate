@@ -36,7 +36,7 @@ const TranslationDisplay = ({ content, error }) => {
         {error ? (
           <p className='text-red-500 ml-2 px-2'>{error}</p>
         ) : (
-          <p className='text-primary-100 p-3'>{content}</p>
+          <p className='text-slate-800 p-3'>{content}</p>
         )}
       </section>
     </>
